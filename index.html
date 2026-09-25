@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João Antônio - Hub de Negócios & Comunidade</title>
-    <!-- URL da logo configurada diretamente no favicon -->
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1183563914529329244/1218968989599023194/logo.png">
+    <!-- Favicon utilizando a logo.png -->
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         :root {
             --primary-blue: #0056b3;
@@ -267,10 +267,10 @@
 </head>
 <body>
 
-    <!-- Header superior com Slogo e Subpáginas -->
+    <!-- Header superior com Slogo (logo.png) e Subpáginas -->
     <header>
         <div class="slogo-container">
-            <img src="https://cdn.discordapp.com/attachments/1183563914529329244/1218968989599023194/logo.png" alt="Logo">
+            <img src="logo.png" alt="Logo">
             <span>João Antônio</span>
         </div>
         <nav class="subpages">
@@ -292,8 +292,414 @@
                     <a class="btn" onclick="switchTab('servicos')">Explorar Soluções</a>
                 </div>
                 <div class="pfoto-container">
-                    <!-- Div com a imagem Pfoto.png solicitada -->
-                    <img src="https://cdn.discordapp.com/attachments/1183563914529329244/1218968989599023194/Pfoto.png" alt="Foto do Projeto de João Antônio">
+                    <!-- Foto de Apresentação (Pfoto.png) -->
+                    <img src="Pfoto.png" alt="Foto do Projeto de João Antônio">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SERVIÇOS DE DEMONSTRAÇÃO SECTION -->
+        <section id="servicos" class="page-section">
+            <h2>Serviços de Demonstração</h2>
+            <p style="margin-top: 8px; color: #666;">Conheça soluções empresariais desenhadas sob medida:</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Landing Pages Corporativas</h3>
+                    <p>Páginas de alta conversão estruturadas com design profissional, responsivo e focado na identidade do seu negócio.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Arquitetura de Servidores Discord</h3>
+                    <p>Configuração empresarial de canais de negócios, cargos automatizados, sistemas de segurança e atendimento via tickets.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Automação com Webhooks</h3>
+                    <p>Integração segura entre plataformas web e canais do Discord para captação imediata de leads e feedbacks de clientes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. FEEDBACKS SECTION (Webhook Integration) -->
+        <section id="feedbacks" class="page-section">
+            <h2>Central de Feedbacks</h2>
+            <p style="margin-top: 8px; color: #666;">Envie sua avaliação corporativa ou comentário diretamente para o canal integrado da nossa diretoria.</p>
+            
+            <form id="feedbackForm" class="feedback-form" onsubmit="sendFeedback(event)">
+                <div class="form-group">
+                    <label for="userName">Seu Nome / Empresa:</label>
+                    <input type="text" id="userName" required placeholder="Ex: Nome ou Empresa Ltda">
+                </div>
+                <div class="form-group">
+                    <label for="userMessage">Mensagem / Avaliação:</label>
+                    <textarea id="userMessage" rows="4" required placeholder="Escreva seu feedback profissional aqui..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: fit-content;">Enviar para o Discord</button>
+                <div id="feedbackStatus" class="feedback-status"></div>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 João Antônio - Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- JavaScript Integrado -->
+    <script>
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            const links = document.querySelectorAll('nav.subpages a');
+            links.forEach(link => link.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            document.getElementById('nav-' + tabId).classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        async function sendFeedback(event) {
+            event.preventDefault();
+
+            const nameInput = document.getElementById('userName').value;
+            const messageInput = document.getElementById('userMessage').value;
+            const statusDiv = document.getElementById('feedbackStatus');
+
+            const webhookUrl = "https://discord.com/api/webhooks/1552837925857661099/3WLdKGtf41IKVFNq386CZdLieMJ5kNTWYllSLuM-XV2j_xL7pzp8RgJiCMgwKH_-In4a";
+
+            const payload = {
+                content: `📢 **Novo Feedback Corporativo Recebido!**`,
+                embeds: [
+                    {
+                        title: `Remetente: ${nameInput}`,
+                        description: messageInput,
+                        color: 3092790,
+                        timestamp: new Date().toISOString()
+                    }
+                ]
+            };
+
+            statusDiv.style.color = "#333";
+            statusDiv.innerHTML = "Enviando feedback...";
+
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok || response.status === 204) {
+                    statusDiv.style.color = "green";
+                    statusDiv.innerHTML = "✅ Feedback enviado com sucesso para o canal do Discord!";
+                    document.getElementById('feedbackForm').reset();
+                } else {
+                    throw new Error("Erro ao enviar.");
+                }
+            } catch (error) {
+                statusDiv.style.color = "red";
+                statusDiv.innerHTML = "❌ Erro ao enviar feedback. Tente novamente.";
+            }
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Antônio - Hub de Negócios & Comunidade</title>
+    <!-- Favicon utilizando a logo.png -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --navy: #001f3f;
+            --yellow: #ffc107;
+            --yellow-hover: #e0a800;
+            --white: #ffffff;
+            --light-bg: #f4f7f6;
+            --text-dark: #333333;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Header & Subpages */
+        header {
+            background-color: var(--navy);
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .slogo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .slogo-container img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 50%;
+            background-color: var(--white);
+            padding: 4px;
+        }
+
+        .slogo-container span {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--white);
+        }
+
+        nav.subpages {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav.subpages a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 3px;
+            cursor: pointer;
+        }
+
+        nav.subpages a:hover, nav.subpages a.active {
+            color: var(--yellow);
+            border-bottom: 2px solid var(--yellow);
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        /* Sections / Views */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero / Hub Section with Pfoto.png */
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin-bottom: 15px;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-blue);
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .pfoto-container {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+
+        .pfoto-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 31, 63, 0.15);
+            border: 3px solid var(--primary-blue);
+        }
+
+        /* Buttons & Call to Action */
+        .btn {
+            background-color: var(--yellow);
+            color: var(--navy);
+            padding: 12px 28px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--yellow-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Servicos de Demonstracao Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .service-card {
+            background: var(--light-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            border-top: 4px solid var(--primary-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Feedbacks Webhook Section */
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary-blue);
+        }
+
+        .feedback-status {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: var(--navy);
+            color: var(--white);
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px 20px;
+            }
+            nav.subpages {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header superior com Slogo (logo.png) e Subpáginas -->
+    <header>
+        <div class="slogo-container">
+            <img src="logo.png" alt="Logo">
+            <span>João Antônio</span>
+        </div>
+        <nav class="subpages">
+            <a onclick="switchTab('hub')" id="nav-hub" class="active">Hub</a>
+            <a onclick="switchTab('servicos')" id="nav-servicos">Serviços</a>
+            <a onclick="switchTab('feedbacks')" id="nav-feedbacks">Feedbacks</a>
+        </nav>
+    </header>
+
+    <!-- Container Principal do Conteúdo -->
+    <div class="main-container">
+
+        <!-- 1. HUB SECTION -->
+        <section id="hub" class="page-section active">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1>Bem-vindo ao <span>Hub Oficial</span></h1>
+                    <p>Olá! Eu sou o João Antônio. Este espaço corporativo foi estruturado para centralizar os meus negócios, apresentar soluções profissionais e conectar você diretamente à nossa comunidade e portfólio.</p>
+                    <a class="btn" onclick="switchTab('servicos')">Explorar Soluções</a>
+                </div>
+                <div class="pfoto-container">
+                    <!-- Foto de Apresentação (Pfoto.png) -->
+                    <img src="Pfoto.png" alt="Foto do Projeto de João Antônio">
                 </div>
             </div>
         </section>
