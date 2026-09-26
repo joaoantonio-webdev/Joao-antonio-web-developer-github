@@ -1,36 +1,316 @@
-const feedbackForm =
-    document.getElementById("feedbackForm");
+// ==========================================
+// ELEMENTOS PRINCIPAIS
+// ==========================================
 
-const feedbackStatus =
-    document.getElementById("feedbackStatus");
+const header =
+    document.querySelector("header");
 
 
-feedbackForm.addEventListener(
-    "submit",
-    sendFeedback
+const menuLinks =
+    document.querySelectorAll(
+        'nav a[href^="#"]'
+    );
+
+
+const sections =
+    document.querySelectorAll(
+        "main section"
+    );
+
+
+// ==========================================
+// NAVEGAÇÃO SUAVE
+// ==========================================
+
+menuLinks.forEach((link) => {
+
+    link.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const sectionId =
+                this.getAttribute("href");
+
+
+            const section =
+                document.querySelector(
+                    sectionId
+                );
+
+
+            if (!section) {
+                return;
+            }
+
+
+            const headerHeight =
+                header.offsetHeight;
+
+
+            const sectionPosition =
+                section
+                    .getBoundingClientRect()
+                    .top
+                +
+                window.scrollY
+                -
+                headerHeight
+                -
+                15;
+
+
+            window.scrollTo({
+
+                top:
+                    sectionPosition,
+
+                behavior:
+                    "smooth"
+
+            });
+
+
+            history.pushState(
+                null,
+                "",
+                sectionId
+            );
+
+
+            atualizarMenuAtivo(
+                sectionId
+            );
+
+        }
+
+    );
+
+});
+
+
+// ==========================================
+// MENU ATIVO
+// ==========================================
+
+function atualizarMenuAtivo(
+    sectionId
+) {
+
+    menuLinks.forEach(
+        (link) => {
+
+            link.classList.remove(
+                "active"
+            );
+
+
+            if (
+                link.getAttribute(
+                    "href"
+                )
+                ===
+                sectionId
+            ) {
+
+                link.classList.add(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// IDENTIFICA A SEÇÃO DURANTE O SCROLL
+// ==========================================
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const headerHeight =
+            header.offsetHeight;
+
+
+        let currentSection =
+            "#inicio";
+
+
+        sections.forEach(
+            (section) => {
+
+                const sectionTop =
+                    section.offsetTop
+                    -
+                    headerHeight
+                    -
+                    120;
+
+
+                if (
+                    window.scrollY
+                    >=
+                    sectionTop
+                ) {
+
+                    currentSection =
+                        "#"
+                        +
+                        section.id;
+
+                }
+
+            }
+        );
+
+
+        atualizarMenuAtivo(
+            currentSection
+        );
+
+    }
 );
 
 
-async function sendFeedback(event) {
+// ==========================================
+// CORRIGE #contato, #servicos ETC.
+// AO ABRIR O SITE
+// ==========================================
+
+window.addEventListener(
+    "load",
+    () => {
+
+        const hash =
+            window.location.hash;
+
+
+        if (!hash) {
+            return;
+        }
+
+
+        const section =
+            document.querySelector(
+                hash
+            );
+
+
+        if (!section) {
+            return;
+        }
+
+
+        setTimeout(
+            () => {
+
+                const headerHeight =
+                    header.offsetHeight;
+
+
+                const sectionPosition =
+                    section
+                        .getBoundingClientRect()
+                        .top
+                    +
+                    window.scrollY
+                    -
+                    headerHeight
+                    -
+                    15;
+
+
+                window.scrollTo({
+
+                    top:
+                        sectionPosition,
+
+                    behavior:
+                        "smooth"
+
+                });
+
+
+                atualizarMenuAtivo(
+                    hash
+                );
+
+            },
+
+            200
+        );
+
+    }
+);
+
+
+// ==========================================
+// FORMULÁRIO
+// ==========================================
+
+const feedbackForm =
+    document.getElementById(
+        "feedbackForm"
+    );
+
+
+const feedbackStatus =
+    document.getElementById(
+        "feedbackStatus"
+    );
+
+
+if (feedbackForm) {
+
+    feedbackForm.addEventListener(
+        "submit",
+        sendFeedback
+    );
+
+}
+
+
+// ==========================================
+// ENVIO DO FORMULÁRIO
+// ==========================================
+
+async function sendFeedback(
+    event
+) {
 
     event.preventDefault();
 
 
     const name =
         document
-            .getElementById("userName")
+            .getElementById(
+                "userName"
+            )
             .value
             .trim();
 
 
     const message =
         document
-            .getElementById("userMessage")
+            .getElementById(
+                "userMessage"
+            )
             .value
             .trim();
 
 
-    if (!name || !message) {
+    if (
+        !name
+        ||
+        !message
+    ) {
 
         showStatus(
             "Preencha todos os campos.",
@@ -49,21 +329,42 @@ async function sendFeedback(event) {
 
     try {
 
+        /*
+        IMPORTANTE:
+
+        O webhook do Discord
+        NÃO deve ficar aqui.
+
+        O navegador envia
+        para um backend seguro.
+        */
+
         const response =
             await fetch(
                 "/api/feedback",
                 {
-                    method: "POST",
+
+                    method:
+                        "POST",
 
                     headers: {
+
                         "Content-Type":
                             "application/json"
+
                     },
 
-                    body: JSON.stringify({
-                        name,
-                        message
-                    })
+                    body:
+                        JSON.stringify({
+
+                            name:
+                                name,
+
+                            message:
+                                message
+
+                        })
+
                 }
             );
 
@@ -71,8 +372,9 @@ async function sendFeedback(event) {
         if (!response.ok) {
 
             throw new Error(
-                "Erro ao enviar feedback"
+                "Erro ao enviar mensagem."
             );
+
         }
 
 
@@ -88,7 +390,9 @@ async function sendFeedback(event) {
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            error
+        );
 
 
         showStatus(
@@ -101,14 +405,25 @@ async function sendFeedback(event) {
 }
 
 
+// ==========================================
+// MENSAGEM DE STATUS
+// ==========================================
+
 function showStatus(
     message,
     color
 ) {
 
+    if (!feedbackStatus) {
+        return;
+    }
+
+
     feedbackStatus.textContent =
         message;
 
+
     feedbackStatus.style.color =
         color;
+
 }
