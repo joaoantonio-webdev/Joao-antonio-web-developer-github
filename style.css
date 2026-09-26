@@ -1,14 +1,23 @@
-:root {
+ :root {
     --navy: #001f3f;
     --blue: #0066cc;
     --blue-hover: #004f9e;
     --yellow: #ffc107;
+
     --white: #ffffff;
+
     --background: #f5f7fa;
+
     --text: #222222;
     --text-light: #666666;
+
     --border: #dddddd;
 }
+
+
+/* ========================= */
+/* RESET */
+/* ========================= */
 
 * {
     margin: 0;
@@ -16,41 +25,72 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
     background: var(--background);
+
     color: var(--text);
+
     line-height: 1.6;
 }
 
+
+/* ========================= */
+/* HEADER */
+/* ========================= */
+
 header {
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     padding: 15px 6%;
 
     background: var(--navy);
 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.15);
 }
 
+
+/* ========================= */
+/* LOGO */
+/* ========================= */
+
 .logo-container {
+
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 }
 
+
 .logo-container img {
+
     width: 45px;
+
     height: 45px;
 
     object-fit: contain;
@@ -62,19 +102,31 @@ header {
     padding: 4px;
 }
 
+
 .logo-container span {
+
     color: white;
 
     font-size: 1.2rem;
+
     font-weight: 700;
 }
 
+
+/* ========================= */
+/* NAVEGAÇÃO */
+/* ========================= */
+
 nav {
+
     display: flex;
+
     gap: 22px;
 }
 
+
 nav a {
+
     color: white;
 
     text-decoration: none;
@@ -84,11 +136,25 @@ nav a {
     transition: 0.3s;
 }
 
+
 nav a:hover {
+
     color: var(--yellow);
 }
 
+
+nav a.active {
+
+    color: var(--yellow);
+}
+
+
+/* ========================= */
+/* MAIN */
+/* ========================= */
+
 main {
+
     max-width: 1150px;
 
     margin: auto;
@@ -96,21 +162,33 @@ main {
     padding: 40px 25px;
 }
 
+
+/* ========================= */
+/* HERO */
+/* ========================= */
+
 .hero {
+
     min-height: 70vh;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 50px;
 }
 
+
 .hero-text {
+
     flex: 1;
 }
 
+
 .mini-title {
+
     color: var(--blue);
 
     font-weight: 700;
@@ -118,7 +196,9 @@ main {
     margin-bottom: 5px;
 }
 
+
 .hero h1 {
+
     font-size: 3rem;
 
     line-height: 1.2;
@@ -128,7 +208,9 @@ main {
     margin-bottom: 20px;
 }
 
+
 .hero h1 span {
+
     display: block;
 
     color: var(--blue);
@@ -136,7 +218,9 @@ main {
     font-size: 2rem;
 }
 
+
 .hero-text p {
+
     max-width: 600px;
 
     color: var(--text-light);
@@ -144,7 +228,9 @@ main {
     font-size: 1.1rem;
 }
 
+
 .hero-buttons {
+
     margin-top: 30px;
 
     display: flex;
@@ -154,13 +240,21 @@ main {
     flex-wrap: wrap;
 }
 
+
+/* ========================= */
+/* IMAGEM PRINCIPAL */
+/* ========================= */
+
 .hero-image {
+
     flex: 1;
 
     text-align: center;
 }
 
+
 .hero-image img {
+
     width: 100%;
 
     max-width: 420px;
@@ -169,10 +263,18 @@ main {
 
     border: 3px solid var(--blue);
 
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    box-shadow:
+        0 10px 35px
+        rgba(0, 0, 0, 0.15);
 }
 
+
+/* ========================= */
+/* SEÇÕES */
+/* ========================= */
+
 .section {
+
     margin-top: 90px;
 
     padding: 40px;
@@ -181,10 +283,14 @@ main {
 
     border-radius: 16px;
 
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+    box-shadow:
+        0 8px 30px
+        rgba(0, 0, 0, 0.07);
 }
 
+
 .section h2 {
+
     font-size: 2rem;
 
     color: var(--navy);
@@ -192,24 +298,35 @@ main {
     margin-bottom: 25px;
 }
 
+
 .section p {
+
     color: var(--text-light);
 
     margin-bottom: 15px;
 }
 
+
+/* ========================= */
+/* TECNOLOGIAS */
+/* ========================= */
+
 .tech-grid {
+
     display: grid;
 
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(130px, 1fr)
-    );
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(130px, 1fr)
+        );
 
     gap: 15px;
 }
 
+
 .tech-card {
+
     padding: 20px;
 
     text-align: center;
@@ -220,53 +337,80 @@ main {
 
     font-weight: 700;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     transition: 0.3s;
 }
 
+
 .tech-card:hover {
+
     transform: translateY(-5px);
 
     border-color: var(--blue);
 }
 
+
+/* ========================= */
+/* PROJETOS */
+/* ========================= */
+
 .projects-grid {
+
     display: grid;
 
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(280px, 1fr)
-    );
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
 
     gap: 25px;
 }
 
+
 .project-card {
+
     padding: 25px;
 
     border-radius: 12px;
 
     background: var(--background);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     transition: 0.3s;
 }
 
+
 .project-card:hover {
+
     transform: translateY(-6px);
 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 10px 25px
+        rgba(0, 0, 0, 0.1);
 }
 
+
 .project-card h3 {
+
     color: var(--navy);
 
     margin-bottom: 12px;
 }
 
+
+/* ========================= */
+/* TAGS */
+/* ========================= */
+
 .tags {
+
     margin: 20px 0;
 
     display: flex;
@@ -276,19 +420,24 @@ main {
     gap: 8px;
 }
 
+
 .tags span {
+
     background: var(--navy);
 
     color: white;
 
-    padding: 5px 12px;
+    padding:
+        5px 12px;
 
     border-radius: 20px;
 
     font-size: 0.8rem;
 }
 
+
 .project-buttons {
+
     display: flex;
 
     gap: 10px;
@@ -296,43 +445,65 @@ main {
     flex-wrap: wrap;
 }
 
+
+/* ========================= */
+/* SERVIÇOS */
+/* ========================= */
+
 .services-grid {
+
     display: grid;
 
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(220px, 1fr)
-    );
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
 
     gap: 20px;
 }
 
+
 .service-card {
+
     padding: 25px;
 
     background: var(--background);
 
     border-radius: 12px;
 
-    border-top: 4px solid var(--blue);
+    border-top:
+        4px solid
+        var(--blue);
 
     transition: 0.3s;
 }
 
+
 .service-card:hover {
+
     transform: translateY(-5px);
 }
 
+
 .service-card h3 {
+
     margin-bottom: 10px;
 
     color: var(--navy);
 }
 
+
+/* ========================= */
+/* BOTÕES */
+/* ========================= */
+
 .btn {
+
     display: inline-block;
 
-    padding: 12px 25px;
+    padding:
+        12px 25px;
 
     border: none;
 
@@ -351,21 +522,33 @@ main {
     transition: 0.3s;
 }
 
+
 .btn:hover {
+
     background: var(--blue-hover);
 
     transform: translateY(-2px);
 }
 
+
 .btn-secondary {
+
     background: var(--navy);
 }
 
+
+/* ========================= */
+/* FORMULÁRIO */
+/* ========================= */
+
 form {
+
     max-width: 650px;
 }
 
+
 .form-group {
+
     display: flex;
 
     flex-direction: column;
@@ -375,39 +558,55 @@ form {
     margin-bottom: 20px;
 }
 
+
 .form-group label {
+
     font-weight: 700;
 
     color: var(--navy);
 }
 
+
 .form-group input,
 .form-group textarea {
+
     padding: 13px;
 
     border-radius: 8px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     font-size: 1rem;
 
     font-family: inherit;
 }
 
+
 .form-group input:focus,
 .form-group textarea:focus {
+
     outline: none;
 
     border-color: var(--blue);
 }
 
+
 #feedbackStatus {
+
     margin-top: 15px;
 
     font-weight: 600;
 }
 
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
 footer {
+
     margin-top: 70px;
 
     padding: 30px;
@@ -419,14 +618,23 @@ footer {
     text-align: center;
 }
 
+
+/* ========================= */
+/* RESPONSIVIDADE */
+/* ========================= */
+
 @media (max-width: 800px) {
+
     header {
+
         flex-direction: column;
 
         gap: 15px;
     }
 
+
     nav {
+
         justify-content: center;
 
         flex-wrap: wrap;
@@ -434,21 +642,87 @@ footer {
         gap: 12px;
     }
 
+
     .hero {
+
         flex-direction: column;
 
         text-align: center;
+
+        padding-top: 20px;
     }
 
+
     .hero-buttons {
+
         justify-content: center;
     }
 
+
     .hero h1 {
+
         font-size: 2.4rem;
     }
 
-    .section {
-        padding: 25px;
+
+    .hero h1 span {
+
+        font-size: 1.7rem;
     }
+
+
+    .section {
+
+        padding: 25px;
+
+        margin-top: 60px;
+    }
+
+
+    .hero-image img {
+
+        max-width: 350px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    main {
+
+        padding:
+            25px 15px;
+    }
+
+
+    .logo-container span {
+
+        font-size: 1rem;
+    }
+
+
+    nav {
+
+        font-size: 0.9rem;
+    }
+
+
+    .hero h1 {
+
+        font-size: 2rem;
+    }
+
+
+    .hero h1 span {
+
+        font-size: 1.5rem;
+    }
+
+
+    .section {
+
+        padding: 20px;
+    }
+
 }
