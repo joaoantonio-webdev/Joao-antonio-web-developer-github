@@ -9,9 +9,12 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>
-        João Antônio | Web Developer
-    </title>
+    <meta
+        name="description"
+        content="Portfólio de João Antônio, Web Developer."
+    >
+
+    <title>João Antônio | Web Developer</title>
 
     <link
         rel="icon"
@@ -28,9 +31,17 @@
 
 <body>
 
-    <header>
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
 
-        <div class="logo-container">
+    <header class="header">
+
+        <a
+            href="#inicio"
+            class="logo-container"
+            aria-label="Ir para o início"
+        >
 
             <img
                 src="Slogo.png"
@@ -41,20 +52,622 @@
                 João Antônio
             </span>
 
-        </div>
+        </a>
 
 
-        <nav>
+        <button
+            class="menu-button"
+            id="menuButton"
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+
+        <nav
+            class="navigation"
+            id="navigation"
+        >
 
             <a
                 href="#inicio"
-                class="active"
+                class="nav-link active"
             >
                 Início
             </a>
 
-            <a href="#sobre">
+            <a
+                href="#sobre"
+                class="nav-link"
+            >
                 Sobre
             </a>
 
-            <a href="#te
+            <a
+                href="#tecnologias"
+                class="nav-link"
+            >
+                Tecnologias
+            </a>
+
+            <a
+                href="#projetos"
+                class="nav-link"
+            >
+                Projetos
+            </a>
+
+            <a
+                href="#servicos"
+                class="nav-link"
+            >
+                Serviços
+            </a>
+
+            <a
+                href="#contato"
+                class="nav-link"
+            >
+                Contato
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CONTEÚDO
+    ========================== -->
+
+    <main>
+
+
+        <!-- =========================
+             INÍCIO
+        ========================== -->
+
+        <section
+            id="inicio"
+            class="hero"
+        >
+
+            <div class="hero-text">
+
+                <p class="mini-title">
+                    Olá, eu sou
+                </p>
+
+
+                <h1>
+
+                    João Antônio
+
+                    <span>
+                        Web Developer
+                    </span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Desenvolvo sites modernos,
+                    responsivos e integrações web,
+                    transformando ideias em projetos
+                    digitais funcionais.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#projetos"
+                        class="btn"
+                    >
+                        Ver projetos
+                    </a>
+
+
+                    <a
+                        href="https://github.com/joaoantonio-webdev"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-dark"
+                    >
+                        GitHub
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <img
+                    src="fotoprofissional.png"
+                    alt="João Antônio"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SOBRE
+        ========================== -->
+
+        <section
+            id="sobre"
+            class="section"
+        >
+
+            <div class="section-title">
+
+                <p>
+                    Quem sou eu
+                </p>
+
+                <h2>
+                    Sobre mim
+                </h2>
+
+            </div>
+
+
+            <div class="about-content">
+
+                <p>
+
+                    Sou João Antônio,
+                    desenvolvedor web interessado
+                    em tecnologia,
+                    desenvolvimento front-end,
+                    automações e integrações
+                    entre plataformas.
+
+                </p>
+
+
+                <p>
+
+                    Estou desenvolvendo minhas
+                    habilidades enquanto construo
+                    projetos reais e publico
+                    minha evolução no GitHub.
+
+                </p>
+
+
+                <p>
+
+                    Gosto de transformar ideias
+                    em páginas e aplicações
+                    funcionais, organizadas
+                    e fáceis de usar.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TECNOLOGIAS
+        ========================== -->
+
+        <section
+            id="tecnologias"
+            class="section"
+        >
+
+            <div class="section-title">
+
+                <p>
+                    Minhas ferramentas
+                </p>
+
+                <h2>
+                    Tecnologias
+                </h2>
+
+            </div>
+
+
+            <div class="tech-grid">
+
+                <div class="tech-card">
+                    <strong>HTML5</strong>
+                    <span>Estrutura</span>
+                </div>
+
+
+                <div class="tech-card">
+                    <strong>CSS3</strong>
+                    <span>Estilo</span>
+                </div>
+
+
+                <div class="tech-card">
+                    <strong>JavaScript</strong>
+                    <span>Interatividade</span>
+                </div>
+
+
+                <div class="tech-card">
+                    <strong>Git</strong>
+                    <span>Versionamento</span>
+                </div>
+
+
+                <div class="tech-card">
+                    <strong>GitHub</strong>
+                    <span>Repositórios</span>
+                </div>
+
+
+                <div class="tech-card">
+                    <strong>GitHub Pages</strong>
+                    <span>Hospedagem</span>
+                </div>
+
+
+                <div class="tech-card">
+                    <strong>APIs</strong>
+                    <span>Integrações</span>
+                </div>
+
+
+                <div class="tech-card">
+                    <strong>Webhooks</strong>
+                    <span>Automação</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJETOS
+        ========================== -->
+
+        <section
+            id="projetos"
+            class="section"
+        >
+
+            <div class="section-title">
+
+                <p>
+                    O que estou construindo
+                </p>
+
+                <h2>
+                    Meus projetos
+                </h2>
+
+            </div>
+
+
+            <div class="projects-grid">
+
+
+                <!-- PROJETO 1 -->
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        01
+                    </div>
+
+
+                    <h3>
+                        João Antônio Developer Hub
+                    </h3>
+
+
+                    <p>
+
+                        Meu portfólio pessoal,
+                        desenvolvido para apresentar
+                        projetos, tecnologias,
+                        serviços e minha evolução
+                        como Web Developer.
+
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span>
+                            HTML
+                        </span>
+
+                        <span>
+                            CSS
+                        </span>
+
+                        <span>
+                            JavaScript
+                        </span>
+
+                    </div>
+
+
+                    <div class="project-buttons">
+
+                        <a
+                            href="https://joaoantonio-webdev.github.io/Joao-antonio-web-developer-github/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn"
+                        >
+                            Ver projeto
+                        </a>
+
+
+                        <a
+                            href="https://github.com/joaoantonio-webdev/Joao-antonio-web-developer-github"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-dark"
+                        >
+                            Ver código
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PROJETO 2 -->
+
+                <article class="project-card future-project">
+
+                    <div class="project-number">
+                        02
+                    </div>
+
+
+                    <h3>
+                        Próximo projeto
+                    </h3>
+
+
+                    <p>
+
+                        Este espaço será ocupado
+                        por um dos meus próximos
+                        projetos de desenvolvimento web.
+
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span>
+                            Em desenvolvimento
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SERVIÇOS
+        ========================== -->
+
+        <section
+            id="servicos"
+            class="section"
+        >
+
+            <div class="section-title">
+
+                <p>
+                    O que posso desenvolver
+                </p>
+
+                <h2>
+                    Serviços
+                </h2>
+
+            </div>
+
+
+            <div class="services-grid">
+
+
+                <article class="service-card">
+
+                    <span class="service-icon">
+                        01
+                    </span>
+
+                    <h3>
+                        Landing Pages
+                    </h3>
+
+                    <p>
+
+                        Desenvolvimento de páginas
+                        modernas, responsivas
+                        e adaptadas para celulares,
+                        tablets e computadores.
+
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <span class="service-icon">
+                        02
+                    </span>
+
+                    <h3>
+                        Sites Institucionais
+                    </h3>
+
+                    <p>
+
+                        Sites para apresentar
+                        empresas, projetos,
+                        marcas, serviços
+                        ou profissionais.
+
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <span class="service-icon">
+                        03
+                    </span>
+
+                    <h3>
+                        Integrações Web
+                    </h3>
+
+                    <p>
+
+                        Integrações utilizando
+                        formulários, APIs,
+                        automações e webhooks.
+
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <span class="service-icon">
+                        04
+                    </span>
+
+                    <h3>
+                        Discord
+                    </h3>
+
+                    <p>
+
+                        Organização de servidores,
+                        canais, cargos,
+                        permissões e sistemas
+                        de atendimento.
+
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTATO
+        ========================== -->
+
+        <section
+            id="contato"
+            class="section contact-section"
+        >
+
+            <div class="section-title">
+
+                <p>
+                    Vamos conversar
+                </p>
+
+                <h2>
+                    Contato
+                </h2>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <div>
+
+                    <h3>
+                        Tem uma ideia ou projeto?
+                    </h3>
+
+
+                    <p>
+
+                        Você pode conhecer meus
+                        projetos, acompanhar minha
+                        evolução e entrar em contato
+                        comigo pelo GitHub.
+
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="https://github.com/joaoantonio-webdev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn"
+                >
+                    Abrir meu GitHub
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+
+    <footer>
+
+        <p>
+
+            ©
+            <span id="currentYear">
+                2026
+            </span>
+
+            João Antônio —
+            Web Developer
+
+        </p>
+
+    </footer>
+
+
+    <!-- CONEXÃO COM O JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
